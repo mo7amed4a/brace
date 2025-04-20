@@ -24,7 +24,7 @@ export default function Project() {
                 <span>Sales Representative Application</span>
               </div>
            </div>
-            <p className='text-card/70'>The app aims to enable sales representatives to perform their tasks with ease and speed. It is a comprehensive tool that helps manage customer data, issue invoices, and monitor inventory.</p>
+            <p className='text-white/70'>The app aims to enable sales representatives to perform their tasks with ease and speed. It is a comprehensive tool that helps manage customer data, issue invoices, and monitor inventory.</p>
            <div>
             <Button className='border border-gray-600'>READ MORE</Button>
            </div>
