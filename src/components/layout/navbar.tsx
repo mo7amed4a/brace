@@ -2,11 +2,28 @@
 
 import { useState } from "react"
 import Link from "next/link"
+
 import { Menu, X, User } from "lucide-react"
 import Logo from "./logo"
 
 export default function Navbar() {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  // const pathname = usePathname()
+  // const [hash, setHash] = useState("")
+
+  // // تحديث التجزئة عند تغيير URL
+  // useEffect(() => {
+  //   setHash(window.location.hash)
+  //   const handleHashChange = () => setHash(window.location.hash)
+  //   window.addEventListener("hashchange", handleHashChange)
+  //   return () => window.removeEventListener("hashchange", handleHashChange)
+  // }, []) // قائمة تبعيات فارغة
+
+  // const toggleMenu = () => {
+  //   setIsMenuOpen(!isMenuOpen)
+  // }
+
 
   return (
     <header className=" text-white w-full sticky top-0 z-50">
@@ -21,16 +38,16 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <Link href="#how-we-are" className="text-[#cccccc] hover:text-white transition-colors">
+          <Link href="/#how-we-are" className="text-[#cccccc] hover:text-white transition-colors">
             How we are ?
           </Link>
-          <Link href="#services" className="text-[#cccccc] hover:text-white transition-colors">
+          <Link href="/#services" className="text-[#cccccc] hover:text-white transition-colors">
             Services
           </Link>
           <Link href="/projects" className="text-[#cccccc] hover:text-white transition-colors">
             Projects
           </Link>
-          <Link href="#faqs" className="text-[#cccccc] hover:text-white transition-colors">
+          <Link href="/#faqs" className="text-[#cccccc] hover:text-white transition-colors">
             FAQs
           </Link>
         </nav>

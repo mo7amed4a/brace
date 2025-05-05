@@ -11,6 +11,7 @@ export default function page() {
   return (
     <div className=''>
       <div className="bg-[#3E271E] h-20 -mt-20"></div>
+      {/* <Test /> */}
       <Hero />
       <SectionTwo />
       <SectionThree />

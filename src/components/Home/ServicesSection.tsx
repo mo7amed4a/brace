@@ -1,9 +1,31 @@
+"use client";
 import React from 'react'
 import { Button } from '../ui/button'
+import { motion } from 'framer-motion';
 
-export default function ServicesSection() {
+
+export default function ServicesSection() {  
+  const Variants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: 'easeOut',
+      },
+    },
+  };
+
   return (
-    <div className='max-w-6xl mx-auto flex flex-col gap-10 p-4'>
+    <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={Variants}
+     className='max-w-6xl mx-auto flex flex-col gap-10 p-4 py-20'
+     id="services"
+     >
       <div className='flex flex-col items-center text-center gap-3'>
         <h3 className='font-bold text-3xl'>Our Services</h3>
         <p>A range of Services to support all your needs.</p>
@@ -101,6 +123,6 @@ export default function ServicesSection() {
           <Button className='border border-gray-700'>Start a Project</Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

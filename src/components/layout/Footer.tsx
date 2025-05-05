@@ -13,10 +13,18 @@ export default function Footer() {
         </h2>
       </div>
       <div className="flex flex-col items-center md:flex-row gap-4">
+      <Link href="/#how-we-are">
         <Button variant={"ghost"}>How we are ?</Button>
+      </Link>
+      <Link href="/#services">
         <Button variant={"ghost"}>Services</Button>
+      </Link>
+      <Link href="/projects">
         <Button variant={"ghost"}>Projects</Button>
+      </Link>
+      <Link href="/#faqs">
         <Button variant={"ghost"}>FAQs</Button>
+      </Link>
       </div>
       <div className="flex justify-between text-sm w-full">
         <span>All Right Reserved For Brace Development © 2025</span>

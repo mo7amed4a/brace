@@ -1,20 +1,39 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { useState } from "react"
-import Link from "next/link"
+import type React from "react";
+import { useState } from "react";
+import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [rememberMe, setRememberMe] = useState(false)
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle login logic here
-    console.log({ email, password, rememberMe })
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+
+    try {
+      const result = await signIn("login", {
+        login,
+        password,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        setError(result.error);
+        return;
+      }
+
+      router.push("/dashboard");
+    } catch {
+      setError("Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <div className="w-full max-w-md mx-auto px-4">
@@ -23,18 +42,22 @@ export default function LoginForm() {
         <p className="text-gray-300">Welcome Back, Brace Development</p>
       </div>
 
+      {error && (
+        <div className="text-red-500 text-sm text-center mb-4">{error}</div>
+      )}
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-1">
-          <label htmlFor="email" className="block text-sm text-white">
-            Email:
+          <label htmlFor="login" className="block text-sm text-white">
+            Phone Number:
           </label>
           <div className="relative">
             <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
+              type="tel"
+              id="login"
+              value={login}
+              onChange={(e) => setLogin(e.target.value)}
+              placeholder="Enter your phone number"
               className="w-full bg-white text-gray-800 px-10 py-2 rounded-md"
               required
             />
@@ -50,7 +73,7 @@ export default function LoginForm() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  d="M3 5h18M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
             </div>
@@ -67,7 +90,7 @@ export default function LoginForm() {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••••••"
+              placeholder="Enter your password"
               className="w-full bg-white text-gray-800 px-10 py-2 rounded-md"
               required
             />
@@ -119,13 +142,13 @@ export default function LoginForm() {
 
         <div className="text-center mt-4">
           <p className="text-sm text-white">
-            Don&apos;t have account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/register" className="text-orange-500 hover:text-orange-400">
-              Creat New
+              Create New
             </Link>
           </p>
         </div>
       </form>
     </div>
-  )
+  );
 }

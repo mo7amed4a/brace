@@ -3,7 +3,7 @@ import Logo from "../layout/logo";
 
 export default function SectionTwo() {
   return (
-    <div className="h-[50vh] relative flex items-center justify-center p-4">
+    <div className="h-[50vh] relative flex items-center justify-center p-4 pt-20" id="how-we-are">
       <div className="absolute top-0 left-0 w-full h-full opacity-20" style={{backgroundImage: "url(/images/background.png)"}}></div>
       <div className="flex justify-center flex-col space-y-16">
         <div className="flex gap-2 items-center justify-center">

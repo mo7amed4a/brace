@@ -121,13 +121,20 @@
   }
 }
 
+@layer utilities {
+  .scroll-smooth {
+    scroll-behavior: smooth;
+    scroll-margin-top: 150px;
+  }
+}
+
 
 
 
 
 .scroll-parent {
   position: relative;
-  height: 2rem;
+  height: 2.5rem;
   overflow-x: hidden;
   @apply w-[90vw] md:w-[50vw]
 }

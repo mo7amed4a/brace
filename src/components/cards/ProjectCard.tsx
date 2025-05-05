@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '../ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function ProjectCard({ title, description, imageSrc, imageAlt , color="to-[#489255]/40"}:{ title: string, description: string, imageSrc: string, imageAlt: string, color?: string }) {
   return (
@@ -16,13 +17,17 @@ export default function ProjectCard({ title, description, imageSrc, imageAlt , c
           />
         </div>
         <div className="space-y-6 text-center">
-          <h1 className="text-2xl md:text-3xl font-bold tracking-wide">
-            {title}
-          </h1>
-          <p className="text-center text-gray-400 text-sm md:text-base">
-            {description}
-          </p>
-          <Button variant={"outline"}>Request a demo</Button>
+          <Link href="/projects/NJNdkkmkdmk44JNJd">
+            <h1 className="text-2xl md:text-3xl font-bold tracking-wide">
+              {title}
+            </h1>
+          </Link>
+          <Link href="/projects/NJNdkkmkdmk44JNJd" className='mt-4'>
+            <p className="text-center text-gray-400 text-sm md:text-base">
+              {description}
+            </p>
+          </Link>
+          <Button className='mt-4' variant={"outline"}>Request a demo</Button>
         </div>
       </div>
     </div>

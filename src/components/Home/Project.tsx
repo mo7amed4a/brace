@@ -1,11 +1,31 @@
+"use client"
 import React from 'react'
 import { Button } from '../ui/button'
 import Image from 'next/image'
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function Project() {
+  const Variants = {
+    hidden: { opacity: 0, y: 100, scale: 0.7 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: 'easeOut',
+      },
+    },
+  };
   return (
-    <div className='grid md:grid-cols-2 gap-5'>
-          <div className='grid gap-4 order-2 md:order-1'>
+    <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={Variants}
+     className='grid md:grid-cols-2 gap-5'>
+          <Link href="/projects/NJNdkkmkdmk44JNJd" className='grid gap-4 order-2 md:order-1'>
            <div className='flex gap-4 items-center'>
               <svg width={108} height={96} viewBox="0 0 108 96" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="0.257812" y="0.827148" width={107} height="94.2365" rx="14.9285" fill="white" />
@@ -28,10 +48,10 @@ export default function Project() {
            <div>
             <Button className='border border-gray-600'>READ MORE</Button>
            </div>
-          </div>
+          </Link>
           <div className='order-1 md:order-2'>
             <Image src={"/projects/Mask.png"} width={800} height={800} alt="this is an image"/>
           </div>
-        </div>
+        </motion.div>
   )
 }

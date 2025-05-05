@@ -4,10 +4,14 @@ import { useState } from "react"
 import Link from "next/link"
 import { Menu, X, User, Bell } from "lucide-react"
 import Logo from "./logo"
+import useFetch from "@/hooks/use-fetch"
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 
 export default function NavbarAuth() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
+  const {data} = useFetch("/user")
+  const user = data?.user
+  
   return (
     <header className=" text-white w-full sticky top-0 z-50">
       <div className="container mx-auto bg-[#1a1a1a] rounded-full max-w-7xl px-4 py-4 flex items-center justify-between">
@@ -26,10 +30,21 @@ export default function NavbarAuth() {
           <button className="p-2 rounded-full hover:bg-[#f16722]/10 transition-colors">
             <Bell className="h-5 w-5" />
           </button>
-          <button className="p-2 flex items-center gap-2 rounded-full hover:bg-[#f16722]/10 transition-colors">
-            <User className="h-5 w-5" />
-            Mohamed
-          </button>
+          {user &&<button className="p-2 flex items-center gap-2 rounded-full hover:bg-[#f16722]/10 transition-colors capitalize">
+            <Avatar>
+              <AvatarFallback className="uppercase">
+                {user?.first_name?.charAt(0)}
+                {user?.last_name?.charAt(0)}
+              </AvatarFallback>
+              <AvatarImage   src={`data:image/svg+xml;base64,${user?.profile_image}`}
+                alt="Profile"
+              />
+            </Avatar>
+            <span className="hidden md:block">
+              {user?.first_name + " "}
+              {user?.last_name}
+            </span>
+          </button>}
         </div>
 
         {/* Mobile Menu Button */}

@@ -27,7 +27,7 @@ export default function FAQSection() {
     ]
   return (
     questions && (
-      <section className="py-16">
+      <section className="py-16 md:py-20 lg:py-24" id="faqs">
         <div className="custom-container max-w-5xl mx-auto px-4">
           <div className="flex flex-col items-center gap-4 py-10">
             <h2 className="text-3xl font-bold text-start">Frequently Asked Questions - FAQs</h2>
