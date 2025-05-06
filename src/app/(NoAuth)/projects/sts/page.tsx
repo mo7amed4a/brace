@@ -43,7 +43,7 @@ const HomePage = () => {
                 height={80}
               />
               <h2 className="text-lg md:text-3xl font-bold tracking-wide">
-                AL RAYAN -<br /> SALES REPRESENTATIVE APPLICATION
+              Sama Tourism System (STS)
               </h2>
             </div>
           </header>
