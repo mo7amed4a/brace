@@ -1,6 +1,32 @@
 import React from 'react'
-import Project from './Project'
+import Project, { Project as ProjectType } from './Project'
 
+export const projects:ProjectType[] = [
+  {
+    title: "BMS",
+    logo: "/projects/bms.png",
+    image: "/projects/project-2.png",
+    subtitle: "Sales Representative Application",
+    description: "The app aims to enable sales representatives to perform their tasks with ease and speed. It is a comprehensive tool that helps manage customer data, issue invoices, and monitor inventory.",
+    link: "/projects/bms"
+  },
+  {
+    title: "STS",
+    logo: "/projects/sts.png",
+    image: "/projects/project-3.png",
+    subtitle: "SAMA TOURISM SYSTEM",
+    description: "The app aims to enable sales representatives to perform their tasks with ease and speed. It is a comprehensive tool that helps manage customer data, issue invoices, and monitor inventory.",
+    link: "/projects/sts"
+  },
+  {
+    title: "Al-Rayan",
+    logo: "/projects/rayan-2.png",
+    image: "/projects/Mask.png",
+    subtitle: "Sales Representative Application",
+    description: "The app aims to enable sales representatives to perform their tasks with ease and speed. It is a comprehensive tool that helps manage customer data, issue invoices, and monitor inventory.",
+    link: "/projects/rayan"
+  },
+]
 export default function ProjectsSection() {
   return (
     <div className='max-w-6xl mx-auto flex flex-col gap-20 p-4 py-20'>
@@ -9,9 +35,7 @@ export default function ProjectsSection() {
         <p>The work that we are proud of.</p>
       </div>
       <div className='grid gap-10'>
-        <Project />
-        <Project />
-        <Project />
+        {projects?.map((project) => <Project  key={project.title} project={project}/>)}
       </div>
     </div>
   )
