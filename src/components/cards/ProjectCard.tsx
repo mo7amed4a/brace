@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function ProjectCard({ title, description, imageSrc, imageAlt , color="to-[#489255]/40", link}:{ title: string, description: string, imageSrc: string, imageAlt: string, color?: string, link:string }) {
   return (
-    <div className={`pt-20 flex items-center bg-gradient-to-b from-[#241F29] rounded-b-xl ${color}`}>
+    <div className={`pt-20 flex items-center bg-gradient-to-b via-[#241F29] rounded-b-xl ${color}`}>
       <div className="p-4 flex flex-col gap-4 items-center">
         <div className="flex items-end justify-center">
           <Image
@@ -27,7 +27,9 @@ export default function ProjectCard({ title, description, imageSrc, imageAlt , c
               {description}
             </p>
           </Link>
-          <Button className='mt-4' variant={"outline"}>Request a demo</Button>
+          <Link href={link}>
+            <Button className='mt-4' variant={"outline"}>Request a demo</Button>
+          </Link>
         </div>
       </div>
     </div>

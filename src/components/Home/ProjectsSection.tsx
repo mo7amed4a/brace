@@ -8,7 +8,8 @@ export const projects:ProjectType[] = [
     image: "/projects/project-2.png",
     subtitle: "Sales Representative Application",
     description: "The app aims to enable sales representatives to perform their tasks with ease and speed. It is a comprehensive tool that helps manage customer data, issue invoices, and monitor inventory.",
-    link: "/projects/bms"
+    link: "/projects/bms",
+    color: "to-[#722238]/40 from-[#722238]/20"
   },
   {
     title: "STS",
@@ -16,7 +17,8 @@ export const projects:ProjectType[] = [
     image: "/projects/project-3.png",
     subtitle: "SAMA TOURISM SYSTEM",
     description: "The app aims to enable sales representatives to perform their tasks with ease and speed. It is a comprehensive tool that helps manage customer data, issue invoices, and monitor inventory.",
-    link: "/projects/sts"
+    link: "/projects/sts",
+    color: "to-[#642B0E]/40 from-[#642B0E]/20"
   },
   {
     title: "Al-Rayan",
@@ -24,7 +26,8 @@ export const projects:ProjectType[] = [
     image: "/projects/Mask.png",
     subtitle: "Sales Representative Application",
     description: "The app aims to enable sales representatives to perform their tasks with ease and speed. It is a comprehensive tool that helps manage customer data, issue invoices, and monitor inventory.",
-    link: "/projects/rayan"
+    link: "/projects/rayan",
+    color: "to-[#489255]/40 from-[#489255]/20"
   },
 ]
 export default function ProjectsSection() {

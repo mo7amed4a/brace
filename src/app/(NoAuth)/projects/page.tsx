@@ -16,7 +16,8 @@ export default function page() {
                   imageSrc={project.image}
                   imageAlt="Al Rayan Logo"
                   link={project.link}
-                  />
+                  color={project.color}
+                />
           ))
         }
       </div>

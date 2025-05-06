@@ -33,7 +33,7 @@ const HomePage = () => {
     </div>
       <div className=" max-w-4xl mx-auto">
           <header className="flex items-center justify-start py-8">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 px-4">
               {/* Replace with your logo */}
               <Image
                 src="/projects/rayan.png" // Replace with the actual path to your logo

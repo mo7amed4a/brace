@@ -12,6 +12,7 @@ export type Project = {
   subtitle: string;
   description: string;
   link: string;
+  color?: string
 }
 export default function Project({
   project
@@ -30,11 +31,11 @@ export default function Project({
   };
   return (
     <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={Variants}
-     className='grid md:grid-cols-2 gap-5 group'>
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={Variants}
+      className='grid md:grid-cols-2 gap-5 group'>
           <Link href={project.link} className='grid gap-4 order-2 md:order-1'>
            <div className='flex gap-4 flex-col items-center md:flex-row'>
               {/* <svg width={108} height={96} viewBox="0 0 108 96" fill="none" xmlns="http://www.w3.org/2000/svg">

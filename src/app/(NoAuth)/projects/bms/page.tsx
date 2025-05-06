@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 const HomePage = () => {
   return (
     <div className={`bg-black text-white ${inter.className}`}>
-      <div className="min-h-[70vh] pt-20 flex items-center  bg-gradient-to-b from-[#241F29] to-[#489255]/40 rounded-b-xl">
+      <div className="min-h-[70vh] pt-20 flex items-center  bg-gradient-to-b from-[#241F29] to-[#8B2740]/60 rounded-b-xl">
           <div className="max-w-4xl p-4 mx-auto grid md:grid-cols-2 gap-4 items-center">
             <div className="space-y-6 text-center md:text-start">
               <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold tracking-wide">
@@ -35,7 +35,7 @@ const HomePage = () => {
     </div>
       <div className=" max-w-4xl mx-auto">
           <header className="flex items-center justify-start py-8">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 px-4">
               {/* Replace with your logo */}
               <Image
                 src="/projects/bms.png" // Replace with the actual path to your logo
