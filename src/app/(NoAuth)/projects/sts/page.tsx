@@ -49,12 +49,9 @@ const HomePage = () => {
           </header>
 
           {/* Subtitle */}
-          <p className="text-start text-gray-400 text-lg md:text-xl px-4">
-            The Rayan application aims to enable sales representatives to perform
-            their tasks easily and quickly. It serves as a comprehensive tool that
-            assists in managing customer data, issuing invoices, and monitoring
-            inventory.
-          </p>
+          {/* <p className="text-start text-gray-400 text-lg md:text-xl px-4">
+          BMS is the ultimate all-in-one platform for seamless clinic bookings, multi-branch administration, and smart user-role control. Designed for clinics, hospitals, and medical centers, BMS empowers admins, staff, and patients with a centralized digital hub to streamline appointments, finances, and operations—no more chaos, just clarity.
+          </p> */}
 
           {/* Main Content */}
           <main className="max-w- mx-auto px-4 py-12 space-y-12">

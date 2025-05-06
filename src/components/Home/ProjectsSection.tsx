@@ -7,7 +7,7 @@ export const projects:ProjectType[] = [
     logo: "/projects/bms.png",
     image: "/projects/project-2.png",
     subtitle: "Sales Representative Application",
-    description: "The app aims to enable sales representatives to perform their tasks with ease and speed. It is a comprehensive tool that helps manage customer data, issue invoices, and monitor inventory.",
+    description: "BMS is the ultimate all-in-one platform for seamless clinic bookings, multi-branch administration, and smart user-role control. Designed for clinics, hospitals, and medical centers, BMS empowers admins, staff, and patients with a centralized digital hub to streamline appointments, finances, and operations—no more chaos, just clarity.",
     link: "/projects/bms",
     color: "to-[#722238]/40 from-[#722238]/20"
   },
@@ -16,7 +16,7 @@ export const projects:ProjectType[] = [
     logo: "/projects/sts.png",
     image: "/projects/project-3.png",
     subtitle: "SAMA TOURISM SYSTEM",
-    description: "The app aims to enable sales representatives to perform their tasks with ease and speed. It is a comprehensive tool that helps manage customer data, issue invoices, and monitor inventory.",
+    description: "Discover how STS, the all-in-one B2B travel booking platform, simplifies group reservations, optimizes pricing, and streamlines operations for agencies and corporate partners. From real-time inventory access to seamless multi-user collaboration, STS empowers you to deliver unforgettable travel experiences—effortlessly.",
     link: "/projects/sts",
     color: "to-[#642B0E]/40 from-[#642B0E]/20"
   },
@@ -25,7 +25,7 @@ export const projects:ProjectType[] = [
     logo: "/projects/rayan-2.png",
     image: "/projects/Mask.png",
     subtitle: "Sales Representative Application",
-    description: "The app aims to enable sales representatives to perform their tasks with ease and speed. It is a comprehensive tool that helps manage customer data, issue invoices, and monitor inventory.",
+    description: "The Rayan application is designed to empower sales representatives by streamlining their daily tasks, making their workflow not only easier but also significantly faster. This all-in-one platform acts as a robust tool that facilitates the management of customer data, simplifies the invoicing process, and provides real-time inventory tracking.",
     link: "/projects/rayan",
     color: "to-[#489255]/40 from-[#489255]/20"
   },
