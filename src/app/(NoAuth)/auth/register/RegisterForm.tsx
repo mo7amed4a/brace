@@ -246,7 +246,7 @@ export default function RegisterForm() {
           <input
             type="text"
             id="country"
-            value={lastName}
+            value={country}
             onChange={(e) => setCountry(e.target.value)}
             placeholder="Enter your country"
             className="w-full bg-white text-gray-800 px-4 py-2 rounded-md"
