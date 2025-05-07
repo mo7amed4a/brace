@@ -14,7 +14,6 @@ export default function RegisterForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [country, setCountry] = useState("");
-  const [userCategory, setUserCategory] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const router = useRouter();
@@ -50,10 +49,7 @@ export default function RegisterForm() {
       setError("Please select a country.");
       return;
     }
-    if (!userCategory) {
-      setError("Please select a user category.");
-      return;
-    }
+
 
     try {
       const formData = new FormData();
@@ -64,7 +60,7 @@ export default function RegisterForm() {
       formData.append("password", password);
       formData.append("confirm_password", confirmPassword);
       formData.append("country", country);
-      formData.append("user_category", userCategory);
+      formData.append("user_category", "developer");
       if (file) {
         formData.append("photo", file);
       }
@@ -243,43 +239,19 @@ export default function RegisterForm() {
             </div>
           </div>
         </div>
-
         <div className="space-y-1">
           <label htmlFor="country" className="block text-sm text-white">
-            Country:
+            Country :
           </label>
-          <select
+          <input
+            type="text"
             id="country"
-            value={country}
+            value={lastName}
             onChange={(e) => setCountry(e.target.value)}
+            placeholder="Enter your country"
             className="w-full bg-white text-gray-800 px-4 py-2 rounded-md"
             required
-          >
-            <option value="">Select a country</option>
-            <option value="egy">Egypt</option>
-            <option value="usa">United States</option>
-            <option value="uk">United Kingdom</option>
-            {/* Add more countries as needed */}
-          </select>
-        </div>
-
-        <div className="space-y-1">
-          <label htmlFor="userCategory" className="block text-sm text-white">
-            User Category:
-          </label>
-          <select
-            id="userCategory"
-            value={userCategory}
-            onChange={(e) => setUserCategory(e.target.value)}
-            className="w-full bg-white text-gray-800 px-4 py-2 rounded-md"
-            required
-          >
-            <option value="">Select a category</option>
-            <option value="developer">Developer</option>
-            <option value="designer">Designer</option>
-            <option value="manager">Manager</option>
-            {/* Add more categories as needed */}
-          </select>
+          />
         </div>
 
         <div className="flex flex-col gap-2 col-span-full">
