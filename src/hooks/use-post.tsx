@@ -1,5 +1,5 @@
 // src/hooks/use-post.ts
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
 import api from "@/lib/axios";
 
@@ -7,7 +7,7 @@ interface UsePostResponse {
   data: any;
   loading: boolean;
   error: any;
-  post: (body: any, config?: any) => Promise<void>;
+  post: (body: any, config?: any) => Promise<any>;
 }
 
 const usePost = (url: string): UsePostResponse => {
@@ -31,7 +31,14 @@ const usePost = (url: string): UsePostResponse => {
         },
       });
       setData(response.data);
-    } catch (err) {
+      return response;
+    } catch (err:any) {
+      if (err.response.status === 401) {
+        alert("انتهت جلستك ربما تم فتح جلستك في مكان اخر");
+        signOut({
+          callbackUrl: '/login',
+        })
+      }
       setError(err);
     } finally {
       setLoading(false);

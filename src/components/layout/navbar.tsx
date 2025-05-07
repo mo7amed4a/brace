@@ -29,12 +29,12 @@ export default function Navbar() {
     <header className=" text-white w-full sticky top-0 z-50">
       <div className="container mx-auto bg-[#1a1a1a] rounded-full max-w-7xl px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center">
+        <Link href="/" className="flex items-center">
           <div className="text-[#f16722] mr-2">
             <Logo className="!size-6" />
           </div>
           <h1 className="text-lg font-bold">BRACE Development</h1>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
@@ -60,9 +60,9 @@ export default function Navbar() {
           >
             Start a Project
           </Link>
-          <button className="p-2 rounded-full hover:bg-[#f16722]/10 transition-colors">
+          <Link href="/auth/login" className="p-2 rounded-full hover:bg-[#f16722]/10 transition-colors">
             <User className="h-5 w-5" />
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}

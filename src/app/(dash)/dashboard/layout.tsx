@@ -1,11 +1,18 @@
 import Footer from "@/components/layout/Footer";
 import NavbarAuth from "@/components/layout/navbar-auth";
+import { auth } from "@/lib/authOptions";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession(auth)  
+  if (session === null) {
+    redirect("/auth/login")
+  }
   return (
     <>
         <NavbarAuth />

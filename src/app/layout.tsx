@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SessionProviderLayout from "./SessionProviderLayout";
 import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,6 +48,10 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-r from-[#34231E] via-[#1C1A1A] to-[#1C1A1A] text-white`}
         >
+          <Toaster
+            position="top-center"
+            reverseOrder={false}
+          />
           <NextTopLoader color="#F16722" />
           {children}
         </body>

@@ -2,55 +2,41 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, X, User, Bell } from "lucide-react"
+import { Menu, X, Bell } from "lucide-react"
 import Logo from "./logo"
 import useFetch from "@/hooks/use-fetch"
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+import { UserDropdown } from "./user-dropdown"
+import { UserType } from "@/lib/authOptions"
 
 export default function NavbarAuth() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const {data} = useFetch("/user")
-  const user = data?.user
-  
+  const user: UserType = data?.user
+    
   return (
     <header className=" text-white w-full sticky top-0 z-50">
       <div className="container mx-auto bg-[#1a1a1a] rounded-full max-w-7xl px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center">
+        <Link href="/dashboard" className="flex items-center">
           <div className="text-[#f16722] mr-2">
             <Logo className="!size-6" />
           </div>
           <h1 className="text-lg font-bold">BRACE Development</h1>
-        </div>
+        </Link>
 
 
         {/* Action Buttons */}
-        <div className="hidden md:flex items-center space-x-4">
-          
+        <div className="flex items-center gap-2 md:gap-6">
           <button className="p-2 rounded-full hover:bg-[#f16722]/10 transition-colors">
             <Bell className="h-5 w-5" />
           </button>
-          {user &&<button className="p-2 flex items-center gap-2 rounded-full hover:bg-[#f16722]/10 transition-colors capitalize">
-            <Avatar>
-              <AvatarFallback className="uppercase">
-                {user?.first_name?.charAt(0)}
-                {user?.last_name?.charAt(0)}
-              </AvatarFallback>
-              <AvatarImage   src={`data:image/svg+xml;base64,${user?.profile_image}`}
-                alt="Profile"
-              />
-            </Avatar>
-            <span className="hidden md:block">
-              {user?.first_name + " "}
-              {user?.last_name}
-            </span>
-          </button>}
+          <UserDropdown user={user}/>
+          <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
       </div>
 
       {/* Mobile Menu */}
@@ -93,10 +79,6 @@ export default function NavbarAuth() {
               >
                 Start a Project
               </Link>
-              <button className="flex items-center space-x-2 text-[#cccccc] hover:text-white py-2 transition-colors">
-                <User className="h-5 w-5" />
-                <span>Account</span>
-              </button>
             </div>
           </div>
         </div>

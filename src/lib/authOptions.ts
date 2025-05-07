@@ -3,6 +3,24 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { jwtDecode } from "jwt-decode";
 import AxiosApp from './axios';
 
+export type UserType = {
+  id: number;
+  name: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  country: string;
+  user_category: string;
+  is_accepted: boolean;
+  profile_image: string;
+};
+
+export type SessionType = {
+  user: UserType;
+  expires: string;
+  token: string;
+}
 export const auth: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
@@ -22,12 +40,14 @@ export const auth: NextAuthOptions = {
         try {
           const res = await AxiosApp.post('/sign_in', dataLogin);
           if (res?.data?.status==="success") {
-            const user: {token: string, refresh_token: string, expires_at: string}= {
+            const user: {token: string, refresh_token: string, expires_at: string, user_category: string}= {
               token: "",
               refresh_token: "",
-              expires_at: ""
+              expires_at: "",
+              user_category: "",
             };
             user.token = res.data.token as string
+            user.user_category = res.data.user_category as string
             // user.refresh_token = res.data.refresh_token as string
             // user.expires_at = res.data.expires_at as string
             return user as any;
@@ -41,12 +61,10 @@ export const auth: NextAuthOptions = {
   ],
   callbacks: {
     jwt: async ({ token, user }: { token: any; user: any }) => {
+     
       if (user) {
-        // When the user logs in, store token and other data in the JWT
         token.token = user.token;
-        // token.refresh_token = user.refresh_token;
-        // token.expires_at = user.expires_at;
-        // token.note = user.note;
+        token.user_category = user.user_category;
       }
 
       // Optional: Validate token expiration
@@ -61,14 +79,18 @@ export const auth: NextAuthOptions = {
 
       return token;
     },
-    session: ({ session, token }: { session: any; token: any }) => {
+    session: async ({ session, token }: { session: any; token: any }) => {
       if (token) {
+        const res = await AxiosApp.get("/user", {
+          headers: {
+            Authorization: token.token
+          }
+        }) 
+        console.log("ssssssss auth oprion");
+        
+
         session.token = token.token;
-        session.user = {
-          // refresh_token: token.refresh_token,
-          // expires_at: token.expires_at,
-          note: token.note,
-        };
+        session.user = res.data.user;
 
         // Set session expiration based on expires_at
         if (token.expires_at) {

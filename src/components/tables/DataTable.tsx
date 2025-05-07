@@ -39,6 +39,7 @@ interface DataTableProps<TData> {
   columns: ColumnDef<TData>[];
   searchKey?: keyof TData | string; // Column to filter on (optional)
   defaultPageSize?: number; // Default rows per page
+  loading: boolean
 }
 
 export function DataTable<TData>({
@@ -46,6 +47,7 @@ export function DataTable<TData>({
   columns,
   searchKey,
   defaultPageSize = 10,
+  loading
 }: DataTableProps<TData>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
@@ -131,6 +133,15 @@ export function DataTable<TData>({
                   ))}
                 </TableRow>
               ))
+            ) : loading ? (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center text-gray-400"
+                >
+                  Loading...
+                </TableCell>
+              </TableRow>
             ) : (
               <TableRow>
                 <TableCell

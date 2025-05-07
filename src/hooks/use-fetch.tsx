@@ -1,5 +1,5 @@
 import api from "@/lib/axios";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 const useFetch = (url: string, refresh?: boolean, responseType?: any) => {
@@ -23,6 +23,12 @@ const useFetch = (url: string, refresh?: boolean, responseType?: any) => {
           setLoading(false);
         })
         .catch((err) => {
+          if (err.response.status === 401) {
+            alert("انتهت جلستك ربما تم فتح جلستك في مكان اخر");
+            signOut({
+              callbackUrl: '/login',
+            })
+          }
           setLoading(false);
           setError(err);
         });
