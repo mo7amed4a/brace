@@ -5,9 +5,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { Loader } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function LoginForm() {
   const [login, setLogin] = useState("");
+  const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -16,7 +19,7 @@ export default function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-
+    setLoading(true);
     try {
       const result = await signIn("login", {
         login,
@@ -32,6 +35,8 @@ export default function LoginForm() {
       router.push("/dashboard");
     } catch {
       setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -133,12 +138,14 @@ export default function LoginForm() {
           </div>
         </div>
 
-        <button
+        <Button
           type="submit"
+          disabled={loading}
           className="w-full bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded-md transition duration-300 border border-gray-700"
         >
+          {loading && <Loader className="h-4 w-4 animate-spin" />}
           Login
-        </button>
+        </Button>
 
         <div className="text-center mt-4">
           <p className="text-sm text-white">

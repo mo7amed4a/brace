@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { X } from "lucide-react";
+import { List, X } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -72,6 +72,14 @@ export default function page() {
                     <path d="M8.66667 34.0001C7.74619 34.0001 7 34.7463 7 35.6667C7 36.5872 7.74619 37.3334 8.66667 37.3334H25.3333C26.2538 37.3334 27 36.5872 27 35.6667C27 34.7463 26.2538 34.0001 25.3333 34.0001H8.66667Z" fill="#ABADB1" />
                   </svg>
                   <span className="text-xs md:text-base">Admins</span>
+              </CardContent>
+            </Card>
+         </Link>
+         <Link href={"/dashboard/projects"}>
+            <Card className="py-3 lg:py-4 bg-[#26292C]">
+              <CardContent className="flex flex-col space-y-4 py-10 md:py-16 items-center">
+                 <List className="size-14 text-gray-300" />
+                  <span className="text-xs md:text-base">Projects</span>
               </CardContent>
             </Card>
          </Link>

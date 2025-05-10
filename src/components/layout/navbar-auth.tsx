@@ -17,13 +17,12 @@ export default function NavbarAuth() {
     <header className=" text-white w-full sticky top-0 z-50">
       <div className="container mx-auto bg-[#1a1a1a] rounded-full max-w-7xl px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/dashboard" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <div className="text-[#f16722] mr-2">
             <Logo className="!size-6" />
           </div>
           <h1 className="text-lg font-bold">BRACE Development</h1>
         </Link>
-
 
         {/* Action Buttons */}
         <div className="flex items-center gap-2 md:gap-6">

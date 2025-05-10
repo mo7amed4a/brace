@@ -5,6 +5,9 @@ import Link from "next/link"
 
 import { Menu, X, User } from "lucide-react"
 import Logo from "./logo"
+import { UserDropdown } from "./user-dropdown"
+import useFetch from "@/hooks/use-fetch"
+import { UserType } from "@/lib/authOptions"
 
 export default function Navbar() {
 
@@ -24,6 +27,9 @@ export default function Navbar() {
   //   setIsMenuOpen(!isMenuOpen)
   // }
 
+  const {data} = useFetch("/user")
+  const user: UserType = data?.user
+    
 
   return (
     <header className=" text-white w-full sticky top-0 z-50">
@@ -55,14 +61,13 @@ export default function Navbar() {
         {/* Action Buttons */}
         <div className="hidden md:flex items-center space-x-4">
           <Link
-            href="#start-project"
+            href="#contact"
             className="bg-transparent hover:bg-[#f16722]/10 text-white border border-[#cccccc] rounded-full px-6 py-2 transition-colors"
           >
             Start a Project
           </Link>
-          <Link href="/auth/login" className="p-2 rounded-full hover:bg-[#f16722]/10 transition-colors">
-            <User className="h-5 w-5" />
-          </Link>
+          <UserDropdown user={user}/>
+          
         </div>
 
         {/* Mobile Menu Button */}
@@ -105,7 +110,7 @@ export default function Navbar() {
             </Link>
             <div className="flex flex-col space-y-4 pt-4 border-t border-[#333333]">
               <Link
-                href="#start-project"
+                href="#contact"
                 className="bg-transparent hover:bg-[#f16722]/10 text-white border border-[#cccccc] rounded-full px-6 py-2 text-center transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >

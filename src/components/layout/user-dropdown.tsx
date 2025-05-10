@@ -16,7 +16,7 @@ import {
 import { LogOut, Settings, User } from "lucide-react";
 import { UserType } from "@/lib/authOptions";
 
-export function UserDropdown({ user }: { user: UserType }) {
+export function UserDropdown({ user }: { user?: UserType }) {
   const router = useRouter();
 
   const handleSignOut = async () => {
@@ -25,7 +25,7 @@ export function UserDropdown({ user }: { user: UserType }) {
     router.refresh();
   };
 
-  return user && (
+  return user ? (
     <DropdownMenu dir="ltr">
       <DropdownMenuTrigger asChild className="bg-transparent hover:bg-transparent">
         <Button variant="ghost" className="relative h-10 w-10 md:w-auto">
@@ -90,5 +90,9 @@ export function UserDropdown({ user }: { user: UserType }) {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+  ): (
+    <Link href="/auth/login" className="p-2 rounded-full hover:bg-[#f16722]/10 transition-colors">
+            <User className="h-5 w-5" />
+          </Link>
   );
 }

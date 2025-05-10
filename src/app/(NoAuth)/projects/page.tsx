@@ -3,7 +3,7 @@ import { projects } from '@/components/Home/ProjectsSection'
 import React from 'react'
 
 export default function page() {
-
+  
   return (
     <div className='max-w-7xl mx-auto'>
       <h4 className='text-center font-bold md:text-lg lg:text-2xl py-20'>Our projects</h4>

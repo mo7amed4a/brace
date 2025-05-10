@@ -22,7 +22,7 @@ export default function ContactSection() {
     viewport={{ once: true }}
     variants={Variants}
     className="max-w-6xl mx-auto w-full">
-      <div className="flex flex-col items-center gap-4 py-10 px-4">
+      <div className="flex flex-col items-center gap-4 py-10 px-4" id="contact">
         <h2 className="text-3xl font-bold text-start">Contact us</h2>
         <p className="text-center lg:w-3/4 mx-auto">
           Service description example To buy a plot to build your house, this
